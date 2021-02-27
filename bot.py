@@ -8,12 +8,21 @@ bot = telebot.TeleBot("1610815302:AAEBwrGfMhhMy1QtV3I7qx2RvOrP17iEejU")
 insults = ["fuck you", "go fuck", "fool", "looser"]
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup(True)
-keyboard1.row("/start")
+keyboard1.row("/start", "/random")
 
 
 @bot.message_handler(commands=["start"])
 def start_msg(message):
     bot.send_message(message.chat.id, "Yo! Send me the comic number you want to watch", reply_markup=keyboard1)
+
+
+@bot.message_handler(commands=["random"])
+def random_comics(message):
+    from random import randint
+
+    rand_comic = parse_comics(randint(1, 2000))
+
+    bot.send_photo(message.from_user.id, photo=rand_comic["img"])
 
 
 @bot.message_handler(content_types=['text'])
