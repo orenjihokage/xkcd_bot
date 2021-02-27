@@ -3,7 +3,7 @@ import telebot
 from comics_parser import parse_comics
 
 
-bot = telebot.TeleBot("1610815302:AAEBwrGfMhhMy1QtV3I7qx2RvOrP17iEejU")
+bot = telebot.TeleBot("token")
 
 insults = ["fuck you", "go fuck", "fool", "looser"]
 
